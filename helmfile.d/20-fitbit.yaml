@@ -4,8 +4,7 @@ bases:
 ---
 
 helmDefaults:
-  atomic: true
-  timeout: 600
+  timeout: 95
   kubeContext: {{ .Values.kubeContext }}
 
 releases:
@@ -43,6 +42,8 @@ releases:
     set:
       - name: ingress.hosts
         values: [{{ .Values.server_name }}]
+      - name: serverName
+        value: {{ .Values.server_name }}
       - name: restSourceClients.fitbit.clientId
         value: {{ .Values.fitbit_api_client }}
       - name: restSourceClients.fitbit.clientSecret
